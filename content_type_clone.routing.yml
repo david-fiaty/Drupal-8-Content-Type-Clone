@@ -5,4 +5,3 @@ content_type_clone.clone_content_type:
     _title: 'Clone content type'
   requirements:
     _permission: 'access content'
-    
