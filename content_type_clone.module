@@ -2,7 +2,7 @@
 /**
  * @file
  * Allows to clone content types from a simple link added to each content type
- * in the content type list at admin/structure/types
+ * in the content type list at admin/structure/types.
  */
 
 use Drupal\Core\Url;

@@ -71,3 +71,4 @@ in the creation form.
  	
  * Delete all nodes from the source content type after 
    they have been copied to the target content type
+   
