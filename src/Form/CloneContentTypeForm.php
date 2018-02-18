@@ -217,7 +217,7 @@ class CloneContentTypeForm extends FormBase {
     ];
 
     //Clone fields operations.
-    $fields = \Drupal::entityManager()->getFieldDefinitions('node', $values['source_machine_name']);
+    $fields = \Drupal::service('entity_field.manager')->getFieldDefinitions('node', $values['source_machine_name']);
     foreach ($fields as $field) {
       if (!empty($field->getTargetBundle())) {
         $data = ['field' => $field, 'values' => $values];

@@ -6,6 +6,7 @@ use Drupal\node\Entity\Node;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\content_type_clone\Helpers\ContentTypeCloneHelper;
 
 /**
  * Class CloneContentType.
@@ -68,7 +69,13 @@ class CloneContentType {
     $targetFieldConfig->set('entity_type', 'node');
     $targetFieldConfig->set('bundle', $data['values']['target_machine_name']);
     $targetFieldConfig->save();
-  
+
+    //Copy the form display
+    ContentTypeCloneHelper::copyFieldDisplay('form', 'default', $data);
+
+    //Copy the view display
+    ContentTypeCloneHelper::copyFieldDisplay('view', 'default', $data);
+
     //Update the progress information.
     $context['sandbox']['progress']++;
     $context['sandbox']['current_item'] = $sourceFieldName;
@@ -120,7 +127,7 @@ class CloneContentType {
         $sourceNode->delete();
       }
     }
-
+    
     //Update the progress information.
     $context['sandbox']['progress']++;
     $context['sandbox']['current_item'] = $sourceNodeName;
